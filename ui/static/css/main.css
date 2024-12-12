@@ -1,0 +1,273 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2 {
+    color: #444;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.navbar a {
+    color: #f4a261; /* Оранжевый акцент */
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+    color: #e76f51; /* Более насыщенный цвет */
+}
+/* Название организации */
+.organization-name {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 2px solid #ddd;
+}
+
+/* Подвал */
+.footer {
+    background-color: #333; /* Темно-серый */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer a {
+    color: #f4a261; /* Оранжевый акцент */
+    text-decoration: none;
+}
+.footer a:hover {
+    text-decoration: underline;
+    color: #e76f51; /* Более насыщенный цвет */
+}
+
+/* Стили для форм */
+form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="email"], input[type="password"], input[type="submit"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Стили ошибок */
+.error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+/* Таблицы */
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: #fff;
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Кнопка создания задачи */
+button {
+    display: block;
+    margin: 20px auto;
+    background-color: #0056b3; /* Основной синий */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    padding: 15px 30px; /* Увеличенные отступы */
+    font-size: 18px;    /* Увеличенный шрифт */
+    font-weight: bold;  /* Жирный текст */
+    min-width: 200px;   /* Минимальная ширина кнопки */
+}
+
+button:hover {
+    background-color: #004494; /* Более темный синий при наведении */
+}
+main {
+    flex: 1;
+}
+
+/* Панель навигации */
+.navbar, .findUser, .logout {
+    background-color: #333; /* Темно-серый */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+/* Стили для кнопок внутри формы (Logout и Find) */
+.logout button, .findUser button {
+    background-color: #f4a261; /* Оранжевый акцент */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+.logout button:hover, .findUser button:hover {
+    background-color: #e76f51; /* Более насыщенный оранжевый при наведении */
+}
+
+/* Поле поиска */
+.findUser input[type="search"] {
+    padding: 8px;
+    border: 1px solid #0056b3; /* Основной синий */
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+.findUser input[type="search"]:focus {
+    outline: none;
+    border-color: #0056b3;
+    box-shadow: 0 0 5px rgba(0, 86, 179, 0.5); /* Легкий синий подсвет */
+}
+/* Формы и отступы */
+.findUser form, .logout form {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.home {
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Приветствие */
+.welcome h1 {
+    font-size: 36px;
+    color: #0056b3;
+}
+
+.welcome p {
+    font-size: 18px;
+    color: #555;
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+/* Действия пользователя */
+.actions, .cta {
+    margin-top: 30px;
+}
+
+.actions h2, .cta h2 {
+    font-size: 24px;
+    color: #444;
+}
+
+/* Кнопки на странице Home */
+.action-buttons, .auth-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.button {
+    background-color: #0056b3;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #004494;
+}

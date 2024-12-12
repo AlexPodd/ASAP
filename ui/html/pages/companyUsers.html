@@ -1,0 +1,31 @@
+{{define "title"}}Company users{{end}}
+{{define "main"}}
+<h2>All company users</h2>
+{{if .UsersWithRole}}
+<table idCompany ="{{$.CurrentCompanyId}}" id = "userInCompany">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th><button id = "role" class="sortButton" data-columns="ascending,descending">Role</button></th> 
+        </tr>
+    </thead>
+    <tbody>
+        {{range .UsersWithRole}}
+        <tr>
+            <td>{{.UserID}}</td>
+            <td>{{.Username}}</td>
+            <td>{{.Role}}</td>
+        </tr>
+        {{end}}
+    </tbody>
+</table>
+{{else}}
+<p>There is no such company!</p>
+{{end}}
+<script src="/static/js/sort.js"></script>
+    <script nonce="{{$.Nonce}}">
+    </script>
+{{end}}
+
+

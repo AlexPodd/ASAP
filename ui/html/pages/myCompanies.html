@@ -1,0 +1,31 @@
+{{define "title"}}My companies{{end}}
+{{define "main"}}
+<h2>My companies</h2>
+{{if .CompanyWithUsers}}
+<table id = "company">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Company Name</th>
+            <th><button id = "role" class="sortButton" data-columns="ascending,descending">Role</button></th> 
+        </tr>
+    </thead>
+    <tbody>
+        {{range .CompanyWithUsers}}
+        <tr>
+            <td><a href='/company/menu/{{.CompanyID}}'>{{.CompanyID}}</a></td>
+            <td>{{.CompanyName}}</td>
+            <td>{{.Role}}</td>
+        </tr>
+        {{end}}
+    </tbody>
+</table>
+{{else}}
+<p>You are not a member of the companies</p>
+{{end}}
+<script src="/static/js/sort.js"></script>
+    <script nonce="{{$.Nonce}}">
+    </script>
+{{end}}
+
+

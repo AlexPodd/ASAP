@@ -1,0 +1,29 @@
+{{define "title"}}Home{{end}}
+{{define "main"}}
+<section class="home">
+    <div class="welcome">
+        <h1>Welcome to ASAP</h1>
+        <p>Your ultimate solution for project and task management. Create, organize, and collaborate efficiently with your team!</p>
+    </div>
+
+    {{if .IsAuthenticated}}
+    <div class="actions">
+        <h2>What would you like to do?</h2>
+        <div class="action-buttons">
+            <a href="/company/create" class="button">Create a New Company</a>
+            <a href="/company/myCompanies" class="button">View My Companies</a>
+            <a href="/myInvites" class="button">Check Invites</a>
+        </div>
+    </div>
+    {{else}}
+    <div class="cta">
+        <h2>Get Started</h2>
+        <p>Sign up or log in to start managing your projects and tasks today!</p>
+        <div class="auth-buttons">
+            <a href="/user/signup" class="button">Sign Up</a>
+            <a href="/user/login" class="button">Log In</a>
+        </div>
+    </div>
+    {{end}}
+</section>
+{{end}}

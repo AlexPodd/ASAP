@@ -1,0 +1,61 @@
+{{define "title"}}Project tasks{{end}}
+{{define "main"}}
+<h2>Project tasks</h2>
+{{if .ProjectsTask}}
+<table id="ProjectsTask" idCompany = "{{$.CurrentCompanyId}}" currentProjectName = "{{$.CurrentProjectName}}">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th><button id = "category" class="sortButton" data-columns="ascending,descending">Category</button></th> 
+            <th>Created</th>
+            <th><button id = "expired" class="sortButton" data-columns="ascending,descending">Expired</button></th> 
+            
+            <th><button id = "status" class="filterButton" data-columns="Completed task,Outstanding task">IsDone</button></th> 
+            <th>WhoCompleate</th>
+            <th>Compleate</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{range .ProjectsTask}}
+        <tr>
+            <td>{{.Name}}</td>
+            <td>{{.Category}}</td>
+            <td>{{.Created}}</td>
+            <td>{{.Expired}}</td>
+            {{if .IsDone}}
+    <td>Compleate</td>
+    {{if .Whocomplete.Valid}}
+        <td>{{.Whocomplete.String}}</td>
+    {{else}}
+        <td>-</td>
+    {{end}}
+{{else}}
+    <td>Uncompleate</td>
+    <td>-</td>
+{{end}}
+            <td>
+            <a href="/CompleteTask/{{$.CurrentCompanyId}}/{{$.CurrentProjectName}}/{{.Name}}" style="text-decoration: none;">
+                <button style="padding: 10px 20px; font-size: 16px;">Complete the task</button>
+            </a>
+        </td>
+        </tr>
+        {{end}}
+    </tbody>
+</table>
+{{else}}
+<p>There is no such task in project!</p>
+{{end}}
+<a href="/CreateTask/{{.CurrentCompanyId}}/{{.CurrentProjectName}}" style="text-decoration: none;">
+    <button style="padding: 10px 20px; font-size: 16px;">Create new task!</button>
+</a>
+
+<script src="/static/js/sort.js"></script>
+    <script nonce="{{$.Nonce}}">
+    </script>
+
+<script src="/static/js/filter.js"></script>
+<script nonce="{{$.Nonce}}">
+</script>
+{{end}}
+
+

@@ -1,0 +1,15 @@
+{{define "title"}}Company menu{{end}}
+{{define "main"}}
+<!-- Navigation Buttons -->
+<div style="margin-top: 20px;">
+    <a href="/company/users/{{.CurrentCompanyId}}" style="text-decoration: none;">
+        <button style="padding: 10px 20px; font-size: 16px;">View all company users</button>
+    </a>
+    <a href="/company/projects/{{.CurrentCompanyId}}" style="text-decoration: none;">
+        <button style="padding: 10px 20px; font-size: 16px;">View all company projects</button>
+    </a>
+    <a href="/company/control/{{.CurrentCompanyId}}" style="text-decoration: none;">
+        <button style="padding: 10px 20px; font-size: 16px;">Company control</button>
+    </a>
+</div>
+{{end}}

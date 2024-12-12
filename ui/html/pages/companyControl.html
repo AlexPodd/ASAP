@@ -1,0 +1,52 @@
+{{define "title"}}Company control{{end}}
+{{define "main"}}
+<h2>All company users</h2>
+{{if .UsersWithRole}}
+<table idCompany="{{$.CurrentCompanyId}}" id="userInCompany">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Role</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{range .UsersWithRole}}
+        <tr>
+            <td>{{.UserID}}</td>
+            <td>{{.Username}}</td>
+            <td>{{.Role}}</td>
+            {{if .Role}}
+            <td>
+                {{if eq .Role "owner"}}
+                    <span>Owner</span>
+                {{else}}
+                <form action="/companyControl/{{$.CurrentCompanyId}}/{{.UserID}}/remove" method="POST" novalidate>
+                    <input type="hidden" name="csrf_token" value="{{$.CSRFToken}}">
+                    <div>
+                        <input type="submit" value="Remove from Company">
+                    </div>
+                </form>
+                <form action="/companyControl/{{$.CurrentCompanyId}}/{{.UserID}}/makeUser" method="POST" novalidate>
+                    <input type="hidden" name="csrf_token" value="{{$.CSRFToken}}">
+                    <div>
+                        <input type="submit" value="Make User">
+                    </div>
+                </form>
+                <form action="/companyControl/{{$.CurrentCompanyId}}/{{.UserID}}/makeAdmin" method="POST" novalidate>
+                    <input type="hidden" name="csrf_token" value="{{$.CSRFToken}}">
+                    <div>
+                        <input type="submit" value="Make Admin">
+                    </div>
+                </form>
+                {{end}}
+            </td>
+            {{end}}
+            {{end}}
+    </tbody>
+</table>
+{{else}}
+<p>There is no such company!</p>
+{{end}}
+{{end}}

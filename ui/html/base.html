@@ -1,0 +1,35 @@
+{{define "base"}}
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <title>{{template "title" .}} - ASAP</title>
+        <link rel="stylesheet" href="/static/css/main.css">
+        <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700">
+    </head>
+<body>
+    <header>
+        <div class="organization-name">
+            <h1><a href='/'>ASAP</a></h1>
+        </div>
+    </header>
+    {{template "nav" .}}
+    {{with .Flash}}
+    <script src="/static/js/flash.js"></script>
+    <script nonce="{{$.Nonce}}">
+            showMessage("{{$.Flash}}", "{{$.FlashType}}");
+    </script>
+           {{end}}
+    <main>
+    
+           {{template "main" .}}
+        </main>
+           <footer>
+            <div class="footer">
+                Powered by <a href='https://golang.org/'>Go</a> in {{.CurrentYear}}
+            </div>
+            </footer>
+</body>
+</html>
+{{end}}

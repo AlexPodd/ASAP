@@ -1,0 +1,42 @@
+{{define "title"}}Company projects{{end}}
+{{define "main"}}
+<h2>All company projects</h2>
+
+
+
+{{if .Projects}}
+<table idCompany = "{{$.CurrentCompanyId}}" id = "projects">
+    <thead>
+        <tr>
+            <th>Project Name</th>
+            <th>Created</th>
+            <th><button id = "status" class="filterButton" data-columns="Completed project,Outstanding project">Status</button></th> 
+        </tr>
+    </thead>
+    <tbody>
+        {{range .Projects}}
+        <tr id = "value">
+            <td><a href='/tasks/{{$.CurrentCompanyId}}/{{.Name}}'>{{.Name}}</a></td>
+            <td>{{.Created}}</td>
+            {{if .Status}}
+            <td>Complete</td>
+            {{else}}
+            <td>Uncompleate</td>
+            {{end}}
+        </tr>
+        {{end}}
+    </tbody>
+</table>
+{{else}}
+<p>There is no such projects in company!</p>
+{{end}}
+
+<a href="/project/create/{{.CurrentCompanyId}}" style="text-decoration: none;">
+    <button style="padding: 10px 20px; font-size: 16px;">Create new project!</button>
+</a>
+
+<script src="/static/js/filter.js"></script>
+    <script nonce="{{$.Nonce}}">
+    </script>
+</body>
+{{end}}

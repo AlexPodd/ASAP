@@ -1,0 +1,38 @@
+{{define "nav"}}
+<nav>
+   <div>
+    <div class="navbar">
+       <a href='/'>Home</a>
+       {{if .IsAuthenticated}}
+           <a href='/company/create'>Create company</a>
+           <a href='/company/myCompanies'>My companies</a>
+           <a href='/myInvites'>Invites</a>
+           <a href='/admin'>Admin panel</a>
+       {{end}}
+   
+   <div>
+       {{if .IsAuthenticated}}
+       <div class="logout">
+           <form action='/user/logout' method='POST'>
+                <input type='hidden' name='csrf_token' value='{{.CSRFToken}}'>
+               <button>Logout</button>
+           </form>
+        </div>
+       {{else}}
+           <a href='/user/signup'>Signup</a>
+           <a href='/user/login'>Login</a>
+       {{end}}
+   </div>
+
+   {{if .IsAuthenticated}}
+   <div class="findUser">
+   <form action="/findUsers" method="get">
+    <input name="pattern" placeholder="Find user..." type="search">
+    <button type="submit">Find</button>
+    </div>
+  </form>
+  {{end}}
+</div>
+</div>
+</nav>
+{{end}}

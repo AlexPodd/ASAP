@@ -1,0 +1,35 @@
+{{define "title"}}Invites{{end}}
+{{define "main"}}
+<h2>Invites</h2>
+{{if .Invites}}
+<table>
+        <tr>
+            <th>Company ID</th>
+            <th>Company Name</th>
+            <th>Additional info</th>
+            <th>Actions</th>
+        </tr>
+    <tbody>
+        {{range .Invites}}
+        <tr>
+            <td>{{.CompanyID}}</a></td>
+            <td>{{.CompanyName}}</td>
+            <td>{{.AdditionalInfo}}</td>
+            <td>
+                <form action="/acceptInvite/{{.CompanyID}}" method="POST" style="display:inline;">
+                    <input type="hidden" name="csrf_token" value="{{$.CSRFToken}}">
+                    <input type="submit" value="Accept">
+                </form>
+                <form action="/declineInvite/{{.CompanyID}}" method="POST" style="display:inline;">
+                    <input type="hidden" name="csrf_token" value="{{$.CSRFToken}}">
+                    <input type="submit" value="Decline">
+                </form>
+            </td>
+        </tr>
+        {{end}}
+    </tbody>
+</table>
+{{else}}
+<p>You don't have any invitations in the company</p>
+{{end}}
+{{end}}

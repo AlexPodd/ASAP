@@ -1,0 +1,30 @@
+{{define "title"}}Find user{{end}}
+{{define "main"}}
+<h2>Search results for the query {{.Pattern}}</h2>
+{{if .Users}}
+<table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Invite</th>
+        </tr>
+    <tbody>
+        {{range .Users}}
+        <tr>
+            <td>{{.ID}}</td>
+            <td>{{.Name}}</td>
+            <td>
+                <form action="/sendInviteMenu/{{.ID}}" method="GET" style="display:inline;">
+                    <input type="hidden" name="csrf_token" value="{{$.CSRFToken}}">
+                    <input type="submit" value="Send invite">
+                </form>
+            </td>
+        </tr>
+        {{end}}
+    </tbody>
+</table>
+{{else}}
+<p>No users found!</p>
+{{end}}
+{{end}}
+

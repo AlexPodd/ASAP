@@ -1,0 +1,32 @@
+{{define "title"}}Send invite{{end}}
+{{define "main"}}
+<h2>Send invite</h2>
+{{if .CompanyWithUsers}}
+<table>
+        <tr>
+            <th>ID</th>
+            <th>Company Name</th>
+            <th>Send invite</th>
+        </tr>
+    <tbody>
+        {{range .CompanyWithUsers}}
+        <tr>
+            <td>{{.CompanyID}}</td>
+            <td>{{.CompanyName}}</td>
+            <td>
+                <form action="/sendInvite/{{$.UserToInviteID}}/{{.CompanyID}}" method="POST" style="display:inline;">
+                    <input type="hidden" name="csrf_token" value="{{$.CSRFToken}}">
+                    <textarea name="message" placeholder="Write a message..." rows="3" style="width: 90%;"></textarea>
+                    <input type="submit" value="Send">
+                </form>
+            </td>
+        </tr>
+        {{end}}
+    </tbody>
+</table>
+{{else}}
+<p>You are not an administrator or owner anywhere!</p>
+{{end}}
+{{end}}
+
+

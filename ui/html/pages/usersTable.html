@@ -1,0 +1,39 @@
+{{define "title"}}Find user{{end}}
+{{define "main"}}
+<h2>User table</h2>
+{{if .Users}}
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Hashed Password</th>
+            <th>Created</th>
+            <th>Role</th>
+            <th>Delete User From table</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{range .Users}}
+        <tr>
+            <td>{{.ID}}</td>
+            <td>{{.Name}}</td>
+            <td>{{.Email}}</td>
+            <td>{{.HashedPassword}}</td>
+            <td>{{.Created}}</td>
+            <td>{{.Role}}</td>
+            <td>
+                <form action="/admin/deleteUser/{{.ID}}" method="post" style="display:inline;">
+                    <input type="hidden" name="csrf_token" value="{{$.CSRFToken}}">
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
+        </tr>
+        {{end}}
+    </tbody>
+</table>
+{{else}}
+<p>No users found!</p>
+{{end}}
+{{end}}

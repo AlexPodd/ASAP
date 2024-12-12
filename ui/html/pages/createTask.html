@@ -1,0 +1,40 @@
+{{define "title"}}Create Task{{end}}
+{{define "main"}}
+<h1>Create Task</h1>
+<form action="/CreateTask/{{.CurrentCompanyId}}/{{.CurrentProjectName}}" method="POST" novalidate>
+    <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+
+    <div>
+        <label for="name">Task Name:</label>
+        {{with .Form.FieldErrors.name}}
+            <label class="error">{{.}}</label>
+        {{end}}
+        <input type="text" id="name" name="name" value="{{.Form.Name}}">
+    </div>
+
+    <div>
+        <label for="category">Category:</label>
+        {{with .Form.FieldErrors.category}}
+            <label class="error">{{.}}</label>
+        {{end}}
+        <select name="category" id="category" required>
+            <option value="Urgent" {{if eq .Form.Category "Urgent"}} selected{{end}}>Urgent</option>
+            <option value="High Priority" {{if eq .Form.Category "High Priority"}} selected{{end}}>High Priority</option>
+            <option value="Low Priority" {{if eq .Form.Category "Low Priority"}} selected{{end}}>Low Priority</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="expires">Expiration Date:</label>
+        {{with .Form.FieldErrors.expires}}
+            <label class='error'>{{.}}</label>
+        {{end}}
+        <input type="datetime-local" id="expires" name="expires" value="{{.Form.Expires}}">
+    </div>
+
+    <div>
+        <input type="submit" value="Create Task">
+    </div>
+</form>
+
+{{end}}
